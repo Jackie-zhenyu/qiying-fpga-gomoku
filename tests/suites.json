@@ -1,0 +1,57 @@
+{
+  "voice": {
+    "top": "tb_peripheral_voice",
+    "pass_marker": "PASS qy_peripheral_voice:",
+    "sources": ["fpga/qy_peripheral_voice.v", "tests/voice/tb_peripheral_voice.sv"]
+  },
+  "settings": {
+    "top": "tb_settings",
+    "pass_marker": "PASS_SETTINGS",
+    "sources": ["fpga/qy_peripheral_settings.v", "tests/settings/tb_settings.sv"]
+  },
+  "spi_owner": {
+    "top": "tb_spi_owner",
+    "pass_marker": "PASS spi_owner",
+    "sources": ["fpga/qy_peripheral_spi_owner.v", "tests/spi_owner/tb_spi_owner.sv"]
+  },
+  "config_store": {
+    "top": "tb_config_store",
+    "pass_marker": "PASS config_store checks=",
+    "sources": ["fpga/qy_peripheral_config_store.v", "fpga/qy_storage_flash.v", "fpga/qy_storage_spi_byte.v", "tests/config_store/config_flash_model.sv", "tests/config_store/tb_config_store.sv"]
+  },
+  "config_commit": {
+    "top": "tb_commit_cut",
+    "pass_marker": "PASS config_store_commit_cut",
+    "sources": ["fpga/qy_peripheral_config_store.v", "fpga/qy_storage_flash.v", "fpga/qy_storage_spi_byte.v", "tests/config_store/config_flash_model.sv", "tests/config_store/tb_commit_cut.sv"]
+  },
+  "config_faults": {
+    "top": "tb_fault_paths",
+    "pass_marker": "PASS config_store_fault_paths",
+    "sources": ["fpga/qy_peripheral_config_store.v", "fpga/qy_storage_flash.v", "fpga/qy_storage_spi_byte.v", "tests/config_store/config_flash_model.sv", "tests/config_store/tb_fault_paths.sv"]
+  },
+  "config_owner": {
+    "top": "tb_spi_owner",
+    "pass_marker": "PASS peripheral_spi_owner",
+    "sources": ["fpga/qy_peripheral_config_store.v", "fpga/qy_storage_flash.v", "fpga/qy_storage_spi_byte.v", "fpga/qy_storage_records.v", "fpga/qy_peripheral_spi_owner.v", "tests/config_store/shared_spi_flash_model.sv", "tests/config_store/tb_spi_owner.sv"]
+  },
+  "actions": {
+    "top": "tb_actions",
+    "pass_marker": "PASS_ACTIONS",
+    "sources": ["fpga/qy_peripheral_actions.v", "tests/actions/tb_actions.sv"]
+  },
+  "actions_voice": {
+    "top": "tb_actions_voice",
+    "pass_marker": "PASS_ACTIONS_VOICE",
+    "sources": ["fpga/qy_peripheral_actions.v", "fpga/qy_peripheral_voice.v", "tests/actions/tb_actions_voice.sv"]
+  },
+  "controls": {
+    "top": "tb_controls",
+    "pass_marker": "PASS_CONTROLS",
+    "sources": ["fpga/qy_interaction_controls.v", "tests/actions/tb_controls.sv"]
+  },
+  "menu": {
+    "top": "tb_menu",
+    "pass_marker": "PASS_MENU",
+    "sources": ["fpga/qy_function_menu.v", "fpga/qy_key_frontend.v", "fpga/qy_reset_sync.v", "tests/actions/tb_menu.sv"]
+  }
+}

@@ -1,0 +1,41 @@
+set_pin_assignment	{ I_sys_clk }	{ LOCATION = Y23; IOSTANDARD = LVCMOS33; PULLTYPE = PULLUP; }
+set_pin_assignment	{ I_ddr_clk }	{ LOCATION = AB11; IOSTANDARD = LVDS18; }
+
+set_pin_assignment	{ O_hdmi_clk_p }	{ LOCATION = AA4; IOSTANDARD = LVDS18; }
+set_pin_assignment	{ O_hdmi_tx_p[0] }	{ LOCATION = AB1; IOSTANDARD = LVDS18; }
+set_pin_assignment	{ O_hdmi_tx_p[1] }	{ LOCATION = V3; IOSTANDARD = LVDS18; }
+set_pin_assignment	{ O_hdmi_tx_p[2] }	{ LOCATION = W1; IOSTANDARD = LVDS18; }
+
+
+set_pin_assignment	{ O_cam_scl }	{ LOCATION = Y21; IOSTANDARD = LVCMOS33; DRIVESTRENGTH = 8; PULLTYPE = PULLUP; }
+set_pin_assignment	{ IO_cam_sda }	{ LOCATION = Y22; IOSTANDARD = LVCMOS33; DRIVESTRENGTH = 8; PULLTYPE = PULLUP; }
+set_pin_assignment	{ O_cam_clk }	{ LOCATION = AC23; IOSTANDARD = LVCMOS33; DRIVESTRENGTH = 8; PULLTYPE = NONE; }
+
+set_inst_assignment { u_mipi_dphy_rx_ph1a_mipiio_wrapper/u_ph1a_mipiio_wrapper/u_PH1_PHY_MIPIIO } { location=X5Y0Z0; }
+
+# Evidence: official 02_uart_loop ADC; T24/T25 BANK12=3V3 (not BANK14/15).
+set_pin_assignment {I_capture_uart_rx} {LOCATION = T24; IOSTANDARD = LVCMOS33; PULLTYPE = PULLUP;}
+set_pin_assignment {O_capture_uart_tx} {LOCATION = T25; IOSTANDARD = LVCMOS33; DRIVESTRENGTH = 8; PULLTYPE = NONE;}
+
+# MLK-CK203 DDR3 core schematic: BANK0 configuration SPI pins at3V3.
+# DS900 PH1A180: CCLK user IO allowed, no ODDR.
+set_pin_assignment {O_nn_flash_clk} {LOCATION = C8; IOSTANDARD = LVCMOS33; PULLTYPE = NONE;}
+set_pin_assignment {O_nn_flash_cs_n} {LOCATION = C23; IOSTANDARD = LVCMOS33; PULLTYPE = NONE;}
+set_pin_assignment {O_nn_flash_mosi} {LOCATION = B24; IOSTANDARD = LVCMOS33; PULLTYPE = NONE;}
+set_pin_assignment {I_nn_flash_miso} {LOCATION = A25; IOSTANDARD = LVCMOS33; PULLTYPE = NONE;}
+set_pin_assignment {O_nn_flash_wp_n} {LOCATION = B22; IOSTANDARD = LVCMOS33; PULLTYPE = NONE;}
+set_pin_assignment {O_nn_flash_hold_n} {LOCATION = A22; IOSTANDARD = LVCMOS33; PULLTYPE = NONE;}
+
+# Four physical keys: B1 p30, B2 p16, BANK15 1V8 confirmed by user on 2026-10-09.
+# F9/KEY4 is ordinary input; retained power-on reset is independent.
+set_pin_assignment {I_game_keys_n[0]} {LOCATION = D8; IOSTANDARD = LVCMOS18; PULLTYPE = PULLUP;}
+set_pin_assignment {I_game_keys_n[1]} {LOCATION = D9; IOSTANDARD = LVCMOS18; PULLTYPE = PULLUP;}
+set_pin_assignment {I_game_keys_n[2]} {LOCATION = F8; IOSTANDARD = LVCMOS18; PULLTYPE = PULLUP;}
+set_pin_assignment {I_game_keys_n[3]} {LOCATION = F9; IOSTANDARD = LVCMOS18; PULLTYPE = PULLUP;}
+
+# BANK33 is 1.8V. Cross TX/RX through measured, matching level conversion.
+# CEP5/6 voice; CEP7/8 PN532. Module power voltage is not UART logic voltage.
+set_pin_assignment {I_voice_rx} {LOCATION = AD6; IOSTANDARD = LVCMOS18; PULLTYPE = PULLUP;}
+set_pin_assignment {O_voice_tx} {LOCATION = AD5; IOSTANDARD = LVCMOS18; DRIVESTRENGTH = 8; PULLTYPE = NONE;}
+set_pin_assignment {I_nfc_rx} {LOCATION = AC4; IOSTANDARD = LVCMOS18; PULLTYPE = PULLUP;}
+set_pin_assignment {O_nfc_tx} {LOCATION = AC3; IOSTANDARD = LVCMOS18; DRIVESTRENGTH = 8; PULLTYPE = NONE;}

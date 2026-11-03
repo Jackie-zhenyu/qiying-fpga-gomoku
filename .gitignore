@@ -1,0 +1,32 @@
+# Local CAD and simulation outputs
+build/
+**/syn_*/
+**/phy_*/
+**/.Xil/
+*.db
+*.bit
+*.svf
+*.vvp
+*.vcd
+*.fst
+*.wlf
+*.log
+*.jou
+*.rpt
+*.bid
+*.bak
+
+# Local tool output and Python cache
+tools/voice/generated/
+__pycache__/
+*.py[cod]
+.venv/
+
+# Personal configuration and credentials
+.env
+.env.*
+*.pem
+*.key
+credentials*
+.DS_Store
+Thumbs.db
